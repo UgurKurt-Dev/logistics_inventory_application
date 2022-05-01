@@ -38,7 +38,7 @@ public class DriverController {
 
     @GetMapping("/index")
     public String showDriverList(Model model) {
-        model.addAttribute("users", driverRepository.findAll());
+        model.addAttribute("drivers", driverRepository.findAll());
         return "index";
     }
 
@@ -48,21 +48,21 @@ public class DriverController {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid driver Id:" + id));
 
         model.addAttribute("driver", driver);
-        return "update-user";
+        return "update-driver";
     }
 
     @PostMapping("/update/{id}")
     public String updateDriver(@PathVariable("id") long id, @Valid Driver driver, BindingResult result, Model model) {
         if (result.hasErrors()) {
             driver.setId(id);
-            return "update-user";
+            return "update-driver";
         }
 
         driverRepository.save(driver);
         return "redirect:/index";
     }
 
-    @PostMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteDriver(@PathVariable("id") long id) {
         Driver driver = driverRepository.findById(id).orElseThrow(
             () -> new IllegalArgumentException("Invalid driver Id:" + id));
@@ -70,5 +70,5 @@ public class DriverController {
         driverRepository.delete(driver);
         return "redirect:/index";
     }
-    
+
 }

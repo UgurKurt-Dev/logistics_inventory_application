@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="#" th:action="@{/update/{id}(id=${user.id})}" th:object="${user}" method="post">
+    <form action="#" th:action="@{/update/{id}(id=${driver.id})}" th:object="${driver}" method="post">
         <label for="name">Name</label>
         <input type="text" th:field="*{name}" id="name" placeholder="Name">
         <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
