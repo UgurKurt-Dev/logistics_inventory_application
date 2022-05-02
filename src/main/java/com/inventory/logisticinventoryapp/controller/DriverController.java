@@ -42,6 +42,12 @@ public class DriverController {
         return "index";
     }
 
+    @GetMapping("/")
+    public String showIndex(Model model) {
+        model.addAttribute("drivers", driverRepository.findAll());
+        return "index";
+    }
+
     @GetMapping("/edit/{id}")
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
         Driver driver = driverRepository.findById(id)
