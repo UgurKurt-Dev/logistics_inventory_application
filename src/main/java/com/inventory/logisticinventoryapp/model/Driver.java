@@ -39,10 +39,10 @@ public class Driver {
 
     private Date employmentDate;
 
-    /*@ElementCollection
-    @CollectionTable(name = "DriverLicences", joinColumns = @JoinColumn(name = "id"))
-    @Column(name = "driverLicences")
-    private List<DriverLicences> driverLicenses;*/
+    @ElementCollection
+    @CollectionTable(name = "Certificates", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "certificates")
+    private List<DriverLicences> driverLicenses;
 
     private DriverLicences driverLicences;
 

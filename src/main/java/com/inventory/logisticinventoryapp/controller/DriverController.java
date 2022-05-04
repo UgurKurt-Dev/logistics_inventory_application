@@ -63,7 +63,6 @@ public class DriverController {
             driver.setId(id);
             return "update-driver";
         }
-
         driverRepository.save(driver);
         return "redirect:/index";
     }
@@ -76,5 +75,7 @@ public class DriverController {
         driverRepository.delete(driver);
         return "redirect:/index";
     }
-
 }
+
+
+

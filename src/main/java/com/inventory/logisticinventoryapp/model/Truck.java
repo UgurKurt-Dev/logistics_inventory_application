@@ -1,5 +1,7 @@
 package com.inventory.logisticinventoryapp.model;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,5 +34,8 @@ public class Truck {
     @Min(1900)
     @Max(2050)
     private Integer productionYear;
+
+    private Date lastMaintenanceDate;
+    private Date lastExaminationDate;
     
 }

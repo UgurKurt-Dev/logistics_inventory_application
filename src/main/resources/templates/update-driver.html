@@ -11,55 +11,62 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Drivers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Trucks</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Income/Outcome</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <form action="#" th:action="@{/update/{id}(id=${driver.id})}" th:object="${driver}" method="post">
-        <label for="name">Name</label>
-        <input type="text" th:field="*{name}" id="name" placeholder="Name">
-        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-        <br />
-        <label for="email">Email</label>
-        <input type="text" th:field="*{email}" id="email" placeholder="Email">
-        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
-        <br />
-        <label for="phoneNumber">Phone Number</label>
-        <input type="text" th:field="*{phoneNumber}" id="phoneNumber" placeholder="Phone Number">
-        <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
-        <br />
-        <label for="dateOfBirth">Date Of Birth</label>
-        <input type="text" th:field="*{dateOfBirth}" id="dateOfBirth" placeholder="Year of Birth">
-        <span th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"></span>
-        <br />
-        <label for="employmentDate">Date Of Employment</label>
-        <input type="date" th:field="*{employmentDate}" id="employmentDate" placeholder="Date of Employment">
-        <span th:if="${#fields.hasErrors('employmentDate')}" th:errors="*{employmentDate}"></span>
-        <br />
-        <label for="driverLicences">Owned Driver Licences</label>
-        <select name="driverLicences" th:field="*{driverLicences}" id="driverLicences">
-            <option th:each="driverLicences : ${T(com.inventory.logisticinventoryapp.model.DriverLicences).values()}"
-                th:value="${driverLicences}" th:text="${driverLicences}">
-            </option>
-        </select>
-        <br />
-        <input type="submit" value="Update User">
-    </form>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Drivers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/trucks/listTrucks">Trucks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Income/Outcome</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <h3>Add Driver</h3>
+        <form class="form-group" action="#" th:action="@{/update/{id}(id=${driver.id})}" th:object="${driver}" method="post">
+            <label for="name">Name</label>
+            <input class="form-control" type="text" th:field="*{name}" id="name" placeholder="Name">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            <br />
+            <label for="email">Email</label>
+            <input class="form-control" type="text" th:field="*{email}" id="email" placeholder="Email">
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+            <br />
+            <label for="phoneNumber">Phone Number</label>
+            <input class="form-control" type="text" th:field="*{phoneNumber}" id="phoneNumber"
+                placeholder="Phone Number">
+            <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+            <br />
+            <label for="dateOfBirth">Date Of Birth</label>
+            <input class="form-control" type="text" th:field="*{dateOfBirth}" id="dateOfBirth"
+                placeholder="Year of Birth">
+            <span th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"></span>
+            <br />
+            <label for="employmentDate">Date Of Employment</label>
+            <input class="form-control" type="date" th:field="*{employmentDate}" id="employmentDate"
+                placeholder="Date of Employment">
+            <span th:if="${#fields.hasErrors('employmentDate')}" th:errors="*{employmentDate}"></span>
+            <br />
+            <label for="driverLicences">Owned Driver Licences</label>
+            <select class="form-control" name="driverLicences" th:field="*{driverLicences}" id="driverLicences">
+                <option
+                    th:each="driverLicences : ${T(com.inventory.logisticinventoryapp.model.DriverLicences).values()}"
+                    th:value="${driverLicences}" th:text="${driverLicences}">
+                </option>
+            </select>
+            <br />
+            <input class="btn btn-success" type="submit" value="Update Driver">
+        </form>
+    </div>
 </body>
 
 </html>
