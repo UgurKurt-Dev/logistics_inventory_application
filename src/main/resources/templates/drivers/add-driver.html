@@ -33,7 +33,7 @@
             </div>
         </nav>
         <h3>Add Driver</h3>
-        <form class="form-group" action="#" th:action="@{/addDriver}" th:object="${driver}" method="post">
+        <form class="form-group" action="#" th:action="@{/drivers/addDriver}" th:object="${driver}" method="post">
             <label for="name">Name</label>
             <input class="form-control" type="text" th:field="*{name}" id="name" placeholder="Name">
             <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>

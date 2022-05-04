@@ -32,7 +32,7 @@
             </div>
         </nav>
         <h3>Add Driver</h3>
-        <form class="form-group" action="#" th:action="@{/update/{id}(id=${truck.id})}" th:object="${truck}" method="post">
+        <form class="form-group" action="#" th:action="@{/trucks/update/{id}(id=${truck.id})}" th:object="${truck}" method="post">
             <label for="plateNumber">Plate Number</label>
             <input class="form-control" type="text" th:field="*{plateNumber}" id="plateNumber" placeholder="Plate Number">
             <span th:if="${#fields.hasErrors('plateNumber')}" th:errors="*{plateNumber}"></span>

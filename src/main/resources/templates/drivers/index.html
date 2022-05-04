@@ -72,15 +72,15 @@
                                     <td th:text="${driver.dateOfBirth}"></td>
                                     <td th:text="${driver.employmentDate}"></td>
                                     <td th:text="${driver.driverLicences}"></td>
-                                    <td><a class="btn btn-warning" th:href="@{/edit/{id}(id=${driver.id})}">Edit</a>
+                                    <td><a class="btn btn-warning" th:href="@{/drivers/edit/{id}(id=${driver.id})}">Edit</a>
                                     </td>
-                                    <td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${driver.id})}">Delete</a>
+                                    <td><a class="btn btn-danger" th:href="@{/drivers/delete/{id}(id=${driver.id})}">Delete</a>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <p><a class="btn btn-success float-right" href="/addDriver">Add a new driver</a></p>
+                    <p><a class="btn btn-success float-right" href="/drivers/addDriver">Add a new driver</a></p>
                 </div>
             </div>
         </div>

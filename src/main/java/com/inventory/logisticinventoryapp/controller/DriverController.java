@@ -12,8 +12,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("drivers")
 public class DriverController {
 
     @Autowired
@@ -21,31 +23,31 @@ public class DriverController {
 
     @GetMapping("/addDriver")
     public String showAddDriverForm(Driver driver) {
-        return "add-driver";
+        return "drivers/add-driver";
     }
 
     @PostMapping("/addDriver")
     public String addDriver(@Valid Driver driver, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
-            return "add-driver";
+            return "drivers/add-driver";
         }
 
         driverRepository.save(driver);
-        return "redirect:/index";
+        return "redirect:/drivers/index";
 
     }
 
     @GetMapping("/index")
     public String showDriverList(Model model) {
         model.addAttribute("drivers", driverRepository.findAll());
-        return "index";
+        return "drivers/index";
     }
 
     @GetMapping("/")
     public String showIndex(Model model) {
         model.addAttribute("drivers", driverRepository.findAll());
-        return "index";
+        return "drivers/index";
     }
 
     @GetMapping("/edit/{id}")
@@ -54,17 +56,17 @@ public class DriverController {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid driver Id:" + id));
 
         model.addAttribute("driver", driver);
-        return "update-driver";
+        return "drivers/update-driver";
     }
 
     @PostMapping("/update/{id}")
     public String updateDriver(@PathVariable("id") long id, @Valid Driver driver, BindingResult result, Model model) {
         if (result.hasErrors()) {
             driver.setId(id);
-            return "update-driver";
+            return "drivers/update-driver";
         }
         driverRepository.save(driver);
-        return "redirect:/index";
+        return "redirect:/drivers/index";
     }
 
     @GetMapping("/delete/{id}")
@@ -73,7 +75,7 @@ public class DriverController {
             () -> new IllegalArgumentException("Invalid driver Id:" + id));
         
         driverRepository.delete(driver);
-        return "redirect:/index";
+        return "redirect:/drivers/index";
     }
 }
 
